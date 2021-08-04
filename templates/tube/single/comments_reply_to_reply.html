@@ -1,0 +1,22 @@
+{% for reply in replies %}
+{% load static %}
+
+<div class="s_video_sub_inner">
+
+    <div class="s_video_sub_inner_left">
+        <a href="{% url 'tube:usersingle' reply.user.id %}">
+            {% if reply.user.usericon %}
+                <div><img class="video_usericon" src="{{ reply.user.usericon.url }}" alt="icon"></div>
+            {% else %}
+                <div><img class="video_usericon" src="{% static 'tube/img/non_usericon.png' %}" alt="{{ icon }}"></div>
+            {% endif %}
+        </a>
+    </div>
+
+    <div class="s_video_sub_inner_right">
+        <a href="{% url 'tube:usersingle' reply.user.id %}"><div> {{ reply.user.handle_name }} </div></a>
+        <div>{{ reply.content|linebreaksbr|urlize }}</div>
+        <div class="video_comment_dt">{{ reply.dt|date:"Y-m-d h時" }}</div>
+    </div>
+</div>
+{% endfor %}
