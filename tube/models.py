@@ -145,3 +145,31 @@ class GoodVideo(models.Model):
 
     def __str__(self):
         return self.target.title
+
+
+#Reportモデルクラス
+"""
+class Report(models.Model):
+
+    class Meta:
+        db_table    = "report"
+
+    id          = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
+    dt          = models.DateTimeField(verbose_name="評価日時", default=timezone.now)
+    from_user   = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name="通報したユーザー", on_delete=models.CASCADE)
+    to_user     = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name="通報されたユーザー", on_delete=models.CASCADE)
+    reason      = models.CharField(verbose_name="通報理由", max_length=200)
+
+"""
+
+
+#Twitterのモデル(推測)
+"""
+    id          = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
+    dt          = models.DateTimeField(verbose_name="評価日時", default=timezone.now)
+    target      = models.UUIDField(verbose_name="リプライ先",null=True,blank=True)
+    content     = models.CharField(verbose_name="通知内容", max_length=200)
+    user        = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name="高評価したユーザー", on_delete=models.CASCADE, related_name="favorite_from_user")
+
+"""
+
